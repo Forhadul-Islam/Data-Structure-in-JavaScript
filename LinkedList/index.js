@@ -57,6 +57,39 @@ class LinkedList {
         newNode.next = current.next;
         current.next = newNode;
      }
+
+     remove(data) {
+      if (!this.head) {
+         return null;
+      }
+      if (this.head.data === data) {
+         this.head = this.head.next;
+         this.length--;
+         return this;
+      }
+      let current = this.head;
+      while (current.next) {
+         if (current.next.data === data) {
+            current.next = current.next.next;
+            this.length--;
+            return this;
+         }
+         current = current.next;
+      }
+      return null;
+   }
+
+   removeAt(index) {
+      if (index < 0 || index >= this.length) return null;
+      if (index === 0) return this.remove();
+      let current = this.head;
+      for (let i = 0; i < index - 1; i++) {
+         current = current.next;
+      }
+      current.next = current.next.next;
+      this.length--;
+      return this;
+   }
   }
   
   // this function is used to iterate over the entire linkedlist and print
@@ -79,3 +112,7 @@ console.log("====== Insertion at position 2 ======")
 list.addAtPosition("P", 2)
 list.addAtPosition("Q", 3)
 list.printAll();
+console.log("====== Removal ======")
+list.removeAt(2);
+list.printAll();
+
