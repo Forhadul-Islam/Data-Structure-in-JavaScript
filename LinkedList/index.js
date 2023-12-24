@@ -77,4 +77,5 @@ list.add("C");
 list.printAll();
 console.log("====== Insertion at position 2 ======")
 list.addAtPosition("P", 2)
+list.addAtPosition("Q", 3)
 list.printAll();
